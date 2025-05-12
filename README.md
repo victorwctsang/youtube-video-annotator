@@ -15,38 +15,18 @@ A simple web-based UI for annotating YouTube videos, specifically designed for m
 *   **CSV Export:** Export all annotations to a CSV file.
 *   **Responsive Design:** The interface adapts to different screen sizes.
 
-## Running
-
-Because browsers have security restrictions for local files (`file://`), this application needs to be served by a web server. Python provides a simple built-in server for this purpose.
-
-1.  **Navigate to the project directory:**
-    Open your terminal or command prompt and `cd` into the `youtube_annotator` directory where `index.html` is located.
-
-2.  **Start the local server:**
-    *   If you have Python 3:
-        ```bash
-        python -m http.server
-        ```
-    *   If you have Python 2:
-        ```bash
-        python -m SimpleHTTPServer
-        ```
-    *   *Note:* You can specify a port (e.g., `python -m http.server 8000`). If you don't specify one, it usually defaults to port 8000.
-
-3.  **Open the application in your browser:**
-    Go to `http://localhost:8000` (or the port number you specified/was shown in the terminal).
-
 ## How to Use
 
-1.  **Enter URL:** Paste a YouTube video URL into the input field and click "Load Video".
-2.  **Add Annotations:** Click the "Add Row" button to create a new annotation entry.
-3.  **Select Row:** Click anywhere on a row in the table to select it as the "active" row.
-4.  **Set Timestamps:**
+1.  **Open App**: Go to https://victorwctsang.github.io/youtube-video-annotator/.
+2.  **Enter URL:** Paste a YouTube video URL into the input field and click "Load Video".
+3.  **Add Annotations:** Click the "Add Row" button to create a new annotation entry.
+4.  **Select Row:** Click anywhere on a row in the table to select it as the "active" row.
+5.  **Set Timestamps:**
     *   Manually type the start/end time (MM:SS).
     *   Or, play the video to the desired point, select the row, and click "Set Start" or "Set End". The duration/end time will update automatically.
-5.  **Add Description:** Enter a description for the annotation.
-6.  **Export:** Click "Export to CSV" to download your annotations.
-7.  **Delete:** Click the "Delete" button on any row to remove it.
+6.  **Add Description:** Enter a description for the annotation.
+7.  **Export:** Click "Export to CSV" to download your annotations.
+8.  **Delete:** Click the "Delete" button on any row to remove it.
 
 ## Next Steps
 
