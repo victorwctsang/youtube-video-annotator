@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="autoplay=*, encrypted-media=*, accelerometer=*, gyroscope=*, picture-in-picture=*, clipboard-write=*, web-share=*">
+    <title>Volleyball Video Annotator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Youtube Video Annotator</h1>
+        
+        <div class="url-input-container">
+            <input type="text" id="youtubeUrl" placeholder="Enter YouTube URL" class="url-input">
+            <button onclick="loadVideo()" class="load-button">Load Video</button>
+        </div>
+
+        <div class="content-container">
+            <div class="video-container">
+                <div id="player"></div>
+            </div>
+            
+            <div class="annotation-container">
+                <div class="annotation-controls">
+                    <button onclick="setStartTimeForActiveRow()" class="set-time-button set-start-button">Set Start</button>
+                    <button onclick="setEndTimeForActiveRow()" class="set-time-button set-end-button">Set End</button>
+                </div>
+                <table id="annotationTable">
+                    <thead>
+                        <tr>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Duration</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="annotationTableBody">
+                        <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+                
+                <button onclick="addNewRow()" class="add-row-button">Add Row</button>
+                <button onclick="exportToCSV()" class="export-button">Export to CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load YouTube IFrame API asynchronously -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 
