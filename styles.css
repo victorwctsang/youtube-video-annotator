@@ -24,49 +24,49 @@
     --slider-bg: #ccc;
     --slider-color: white;
     
-    /* Mike Wazowski Theme Variables */
-    --mike-primary-green: #22c55e; /* Changed to user's request */
-    --mike-darker-green: #16a34a;  /* A darker shade for hover/borders */
-    --mike-bg-light: #f0fdf4;      /* Keep a very light background */
-    --mike-text: #14532d;         /* Dark green text */
-    --mike-border: #86efac;       /* Lighter border */
-    --mike-active: #dcfce7;       /* Active row */
-    --mike-hover: #bbf7d0;        /* Hover row */
-    --mike-header: #a7f3d0;       /* Header bg */
+    /* Spike Wazowski Theme Variables */
+    --spike-bg: #e8f5e9; 
+    --spike-main-green: #22c55e;
+    --spike-header-green: #16a34a;
+    --spike-container-bg: #ffffff;
+    --spike-text-dark: #14532d;
+    --spike-border: #a7f3d0;
+    --spike-active: #dcfce7;
+    --spike-hover: #bbf7d0;
+    --spike-button-red: #ef4444;
+    --spike-button-red-hover: #dc2626;
+    --spike-button-green: #22c55e;
+    --spike-button-green-hover: #16a34a;
+    --spike-mouth-red: #ef4444;
 
-    --sulley-blue: #00aae4;
-    --sulley-blue-hover: #007ea7;
-    --accent-yellow: #f9a602;
-    --accent-yellow-hover: #d68f00;
-
-    --slider-checked-bg: var(--mike-primary-green); /* Use new primary green */
+    --slider-checked-bg: var(--spike-main-green);
 }
 
 body.mike-mode {
-    /* Mike Wazowski Theme with #22c55e */
-    --bg-color: var(--mike-bg-light);
-    --container-bg: #ffffff;
-    --text-color: var(--mike-text);
-    --input-border-color: var(--mike-border);
-    --input-bg: #ffffff;
-    --table-header-bg: var(--mike-header);
-    --active-row-bg: var(--mike-active);
-    --active-row-hover-bg: var(--mike-hover);
-    --hover-row-bg: var(--mike-bg-light);
-    --button-primary-bg: var(--sulley-blue);
-    --button-primary-hover: var(--sulley-blue-hover);
-    --button-secondary-bg: var(--accent-yellow);
-    --button-secondary-hover: var(--accent-yellow-hover);
-    --button-success-bg: var(--mike-darker-green); /* Using darker for success */
-    --button-success-hover: var(--mike-text);
-    --button-danger-bg: #e57373;
-    --button-danger-hover: #d32f2f;
-    --button-start-bg: var(--mike-primary-green);
-    --button-start-hover: var(--mike-darker-green);
-    --button-end-bg: var(--sulley-blue);
-    --button-end-hover: var(--sulley-blue-hover);
-    --slider-bg: #555;
-    --slider-checked-bg: var(--mike-primary-green); /* Re-iterate for clarity */
+    /* Spike Wazowski Theme Color Overrides */
+    --bg-color: var(--spike-bg);
+    --container-bg: var(--spike-container-bg);
+    --text-color: var(--spike-text-dark);
+    --input-border-color: var(--spike-border);
+    --input-bg: var(--spike-container-bg);
+    --table-header-bg: #f8fafc; /* Light gray table header */
+    --active-row-bg: var(--spike-active);
+    --active-row-hover-bg: var(--spike-hover);
+    --hover-row-bg: #f8fafc;
+    --button-primary-bg: var(--spike-button-green);
+    --button-primary-hover: var(--spike-button-green-hover);
+    --button-secondary-bg: #64748b;
+    --button-secondary-hover: #475569;
+    --button-success-bg: var(--spike-button-green);
+    --button-success-hover: var(--spike-button-green-hover);
+    --button-danger-bg: var(--spike-button-red);
+    --button-danger-hover: var(--spike-button-red-hover);
+    --button-start-bg: var(--spike-button-green);
+    --button-start-hover: var(--spike-button-green-hover);
+    --button-end-bg: var(--spike-button-red); /* Use red for end button */
+    --button-end-hover: var(--spike-button-red-hover);
+    --slider-bg: #94a3b8;
+    --slider-checked-bg: var(--spike-main-green);
 }
 
 * {
@@ -76,7 +76,7 @@ body.mike-mode {
 }
 
 body {
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     padding: 20px;
     background-color: var(--bg-color);
@@ -86,23 +86,89 @@ body {
 }
 
 .container {
-    max-width: 1800px;
-    margin: 0 auto;
+    max-width: 1800px; /* Reverted */
+    margin: 0 auto; /* Reverted */
     background-color: var(--container-bg);
-    padding: 20px;
+    padding: 20px; /* Reverted */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
     transition: background-color 0.4s;
+    position: relative; /* Keep for header graphic */
+    overflow: hidden; /* Keep for header graphic */
 }
+
+/* --- Spike Wazowski Header Graphic --- */
+.wazowski-header-graphic {
+    display: none; /* Hidden by default */
+    height: 150px;
+    background-color: var(--spike-main-green);
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
+    position: relative;
+    margin: -20px -20px 20px -20px; /* Adjust margin to span container padding */
+}
+
+body.mike-mode .wazowski-header-graphic {
+    display: block;
+}
+
+.wazowski-eye {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; 
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    border: 4px solid #1f2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wazowski-pupil {
+    width: 35px;
+    height: 35px;
+    background-color: #1f2937;
+    border-radius: 50%;
+}
+
+.wazowski-mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    background-color: var(--spike-mouth-red);
+    border-radius: 0 0 60px 60px / 0 0 40px 40px;
+    border: 4px solid #1f2937;
+    border-top: none;
+    overflow: hidden;
+}
+.wazowski-mouth::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    height: 15px;
+    background-image: linear-gradient(to right, #fff 10px, transparent 10px, transparent 20px, #fff 20px, #fff 30px, transparent 30px, transparent 40px, #fff 40px, #fff 50px, transparent 50px, transparent 60px, #fff 60px, #fff 70px, transparent 70px, transparent 80px, #fff 80px, #fff 90px, transparent 90px, transparent 100px, #fff 100px);
+    background-size: 110px 15px;
+}
+/* --- End Header Graphic --- */
 
 h1 {
     text-align: center;
     color: var(--text-color);
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px;
     font-size: 24px;
+    font-weight: 600; /* Keep font weight */
+    padding-top: 0; /* Remove padding rule */
 }
 
 .theme-switch-container {
@@ -114,7 +180,8 @@ h1 {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-    padding: 0 20px;
+    padding: 0 20px; /* Reverted padding */
+    /* Reverted: No border/bg */
 }
 
 .url-input {
@@ -137,17 +204,17 @@ h1 {
     font-size: 16px;
     white-space: nowrap;
 }
-
 .load-button:hover {
     background-color: var(--button-success-hover);
 }
 
 .content-container {
     display: flex;
-    gap: 20px;
-    margin-top: 0; /* Adjusted */
+    gap: 20px; /* Reverted */
+    margin-top: 20px; /* Reverted */
     flex: 1;
     min-height: 0;
+    /* Reverted: No border/bg changes */
 }
 
 .video-container {
@@ -155,6 +222,7 @@ h1 {
     min-width: 0;
     display: flex;
     flex-direction: column;
+    /* Reverted: No border/bg/margin */
 }
 
 #player {
@@ -171,6 +239,39 @@ h1 {
     flex-direction: column;
     gap: 10px;
     max-width: 600px;
+    /* Reverted: No border/bg/margin */
+}
+
+.annotation-controls {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    /* Reverted: No background/padding/border changes */
+}
+
+.set-time-button {
+    padding: 8px 15px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s;
+    flex-grow: 1; /* Reverted */
+}
+
+.set-start-button {
+    background-color: var(--button-start-bg);
+}
+.set-start-button:hover {
+    background-color: var(--button-start-hover);
+}
+
+.set-end-button {
+    background-color: var(--button-end-bg);
+}
+.set-end-button:hover {
+    background-color: var(--button-end-hover);
 }
 
 table {
@@ -196,7 +297,7 @@ th {
 }
 
 body.mike-mode th {
-     color: #000; /* Explicitly set to black for Mike mode */
+     color: #000; /* Keep black header text */
 }
 
 input[type="text"], input[type="number"] {
@@ -207,6 +308,15 @@ input[type="text"], input[type="number"] {
     color: var(--text-color);
     border-radius: 4px;
     font-size: 14px;
+}
+
+.add-row-button, .export-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    white-space: nowrap;
 }
 
 .add-row-button {
@@ -226,61 +336,16 @@ input[type="text"], input[type="number"] {
 }
 
 .delete-button {
-    background-color: var(--button-danger-bg);
-    color: white;
-}
-.delete-button:hover {
-    background-color: var(--button-danger-hover);
-}
-
-.add-row-button, .export-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    white-space: nowrap;
-}
-
-.delete-button {
     padding: 4px 8px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
-}
-
-.annotation-controls {
-    margin-bottom: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.set-time-button {
-    padding: 8px 15px;
+    background-color: var(--button-danger-bg);
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: background 0.2s;
-    flex-grow: 1;
 }
-
-.set-start-button {
-    background-color: var(--button-start-bg);
-}
-
-.set-start-button:hover {
-    background-color: var(--button-start-hover);
-}
-
-.set-end-button {
-    background-color: var(--button-end-bg);
-}
-
-.set-end-button:hover {
-    background-color: var(--button-end-hover);
+.delete-button:hover {
+    background-color: var(--button-danger-hover);
 }
 
 #annotationTableBody tr {
@@ -300,9 +365,14 @@ input[type="text"], input[type="number"] {
     background-color: var(--active-row-hover-bg);
 }
 
-/* Theme Switch Styles (Centering) */
+/* --- Theme Switch Styles --- */
+.theme-switch-container { /* Centering container */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .theme-switch-wrapper {
-  display: inline-flex; /* Use inline-flex to center inline elements */
+  display: inline-flex; 
   align-items: center;
   gap: 8px;
 }
@@ -331,7 +401,6 @@ input[type="text"], input[type="number"] {
   transition: .4s;
 }
 
-/* The handle (default: white circle) */
 .slider:before {
   background-color: var(--slider-color);
   bottom: 3px;
@@ -350,7 +419,7 @@ input:checked + .slider {
 
 /* Mike Mode: Change handle to the new green eye */
 body.mike-mode input:checked + .slider:before {
-  background-color: var(--mike-primary-green);
+  background-color: var(--spike-main-green);
   background-image: radial-gradient(circle at center, 
       #000 2px, /* Pupil */
       #fff 3px, /* Iris white */
@@ -368,7 +437,7 @@ input:checked + .slider:before {
   border-radius: 24px;
 }
 
-/* Responsive styles */
+/* --- Responsive styles (Reverted to previous state) --- */
 @media (max-width: 1200px) {
     .content-container {
         flex-direction: column;
@@ -395,7 +464,17 @@ input:checked + .slider:before {
 
     .container {
         padding: 10px;
+        margin: 10px auto; /* Adjust margin */
+        min-height: calc(100vh - 20px);
     }
+    .wazowski-header-graphic {
+         margin: -10px -10px 15px -10px; /* Adjust margin for smaller padding */
+         height: 120px; /* Slightly smaller header */
+    }
+    .wazowski-eye { width: 60px; height: 60px; border-width: 3px;}
+    .wazowski-pupil { width: 25px; height: 25px;}
+    .wazowski-mouth { width: 80px; height: 40px; border-width: 3px;}
+    .wazowski-mouth::before { height: 12px; }
 
     .url-input-container {
         padding: 0 10px;
@@ -408,5 +487,9 @@ input:checked + .slider:before {
     .add-row-button, .export-button {
         padding: 8px 16px;
         font-size: 14px;
+    }
+    .annotation-controls .set-time-button {
+        font-size: 12px;
+        padding: 5px 10px;
     }
 } 
