@@ -368,4 +368,29 @@ function exportToCSV() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-} 
+}
+
+// ---- Theme Toggle ----
+const themeToggle = document.getElementById('themeCheckbox');
+const currentTheme = localStorage.getItem('theme'); // Using 'theme' key
+
+// Apply saved theme on initial load
+if (currentTheme === 'mike') {
+    document.body.classList.add('mike-mode');
+    themeToggle.checked = true;
+} else {
+    // Default to light/default mode
+    document.body.classList.remove('mike-mode');
+    themeToggle.checked = false;
+}
+
+// Listener for theme toggle
+themeToggle.addEventListener('change', function() {
+    if (this.checked) {
+        document.body.classList.add('mike-mode');
+        localStorage.setItem('theme', 'mike');
+    } else {
+        document.body.classList.remove('mike-mode');
+        localStorage.setItem('theme', 'default'); // Save as 'default'
+    }
+}); 
