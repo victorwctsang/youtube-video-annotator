@@ -15,6 +15,9 @@
             </div>
             <div class="wazowski-mouth"></div>
         </div>
+        <div id="contextMenu" class="context-menu">
+            <div class="context-menu-item" onclick="deleteSelectedRow()">Delete Row</div>
+        </div>
         <h1>Youtube Video Annotator</h1>
         <div class="theme-switch-container">
             <div class="theme-switch-wrapper">
@@ -25,7 +28,7 @@
                 <span>Spike Wazowski Mode</span>
             </div>
         </div>
-        
+
         <div class="url-input-container">
             <input type="text" id="youtubeUrl" placeholder="Enter YouTube URL" class="url-input">
             <button onclick="handleLoadVideoClick()" class="load-button">Load Video</button>
@@ -35,7 +38,7 @@
             <div class="video-container">
                 <div id="player"></div>
             </div>
-            
+
             <div class="annotation-container">
                 <div class="annotation-controls">
                     <button onclick="setStartTimeForActiveRow()" class="set-time-button set-start-button">Set Start</button>
@@ -48,14 +51,18 @@
                             <th>End Time</th>
                             <th>Duration</th>
                             <th>Description</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="annotationTableBody">
-                        <!-- Rows will be added here dynamically -->
+                    <tbody id="annotationTableBody" oncontextmenu="handleContextMenu(event)">
+                        <tr class="active-row">
+                            <td><input type="text" class="start-time" placeholder="MM:SS" onchange="updateEndTime(this)"></td>
+                            <td><input type="text" class="end-time" placeholder="MM:SS" onchange="updateDuration(this)"></td>
+                            <td><input type="text" class="duration" placeholder="MM:SS" readonly></td>
+                            <td><input type="text" class="description" placeholder="Enter description" oninput="saveAnnotationsToLocalStorage()"></td>
+                        </tr>
                     </tbody>
                 </table>
-                
+
                 <button onclick="addNewRow()" class="add-row-button">Add Row</button>
                 <button onclick="exportToCSV()" class="export-button">Export to CSV</button>
             </div>
@@ -71,4 +78,4 @@
     </script>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

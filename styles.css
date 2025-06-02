@@ -23,9 +23,9 @@
     --button-end-hover: #a02424;
     --slider-bg: #ccc;
     --slider-color: white;
-    
+
     /* Spike Wazowski Theme Variables */
-    --spike-bg: #e8f5e9; 
+    --spike-bg: #e8f5e9;
     --spike-main-green: #22c55e;
     --spike-header-green: #16a34a;
     --spike-container-bg: #ffffff;
@@ -120,7 +120,7 @@ body.mike-mode .wazowski-header-graphic {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px; 
+    width: 80px;
     height: 80px;
     background-color: white;
     border-radius: 50%;
@@ -239,7 +239,50 @@ h1 {
     flex-direction: column;
     gap: 10px;
     max-width: 600px;
+    height: 100%;
     /* Reverted: No border/bg/margin */
+}
+
+#annotationTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#annotationTable thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#annotationTable tbody {
+    display: block;
+    overflow-y: auto;
+    max-height: calc(100vh - 400px);
+    min-height: 200px;
+}
+
+#annotationTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#annotationTable th,
+#annotationTable td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--input-border-color);
+}
+
+#annotationTable th {
+    background-color: var(--table-header-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .annotation-controls {
@@ -372,7 +415,7 @@ input[type="text"], input[type="number"] {
 }
 
 .theme-switch-wrapper {
-  display: inline-flex; 
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 }
@@ -420,7 +463,7 @@ input:checked + .slider {
 /* Mike Mode: Change handle to the new green eye */
 body.mike-mode input:checked + .slider:before {
   background-color: var(--spike-main-green);
-  background-image: radial-gradient(circle at center, 
+  background-image: radial-gradient(circle at center,
       #000 2px, /* Pupil */
       #fff 3px, /* Iris white */
       #fff 6px, /* Rest of white */
@@ -442,7 +485,7 @@ input:checked + .slider:before {
     .content-container {
         flex-direction: column;
     }
-    
+
     .video-container, .annotation-container {
         width: 100%;
         max-width: none;
@@ -492,4 +535,30 @@ input:checked + .slider:before {
         font-size: 12px;
         padding: 5px 10px;
     }
-} 
+}
+
+.context-menu {
+    display: none;
+    position: fixed;
+    background-color: var(--container-bg);
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.context-menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+    background-color: var(--hover-row-bg);
+}
+
+body.mike-mode .context-menu-item:hover {
+    background-color: var(--spike-hover);
+}
